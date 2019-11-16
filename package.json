@@ -4,7 +4,8 @@
   "description": "un chat como telegram pero mucho mejor",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": " nodemon -e js"
   },
   "keywords": [
     "chat",
@@ -14,7 +15,9 @@
   "author": "Fernando Cordero",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
     "nodemon": "^1.19.4"
   }
 }
