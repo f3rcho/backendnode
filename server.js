@@ -8,13 +8,18 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.use(router)
 
 router.get('/message', function(req, res) {
-    console.log(req.body)
-    console.log(req.query)
-    res.send('Lista de mesajes ' + req.body.text + ' añadido correctamente')
+    console.log(req.headers)
+    //definiendo una cabecera personalizada
+    res.header({
+        "custom-header": "Nuestro valor predeterminado"
+    })
+    res.send('Lista de mesajes añadido correctamente')
 })
 
 router.post('/message', function(req, res) {
-    res.send('Mensaje añadido')
+    console.log(req.body)
+    console.log(req.query)
+    res.send('Mensaje ' + req.body.text + ' añadido')
 })
 
 router.delete('/message', function(req, res) {
