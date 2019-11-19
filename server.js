@@ -23,7 +23,7 @@ router.post('/message', function(req, res) {
 })
 
 router.delete('/message', function(req, res) {
-    res.send('Mensaje eliminado')
+    res.status(201).send({error: '', body: 'Creado correctamente'}) // podemos cualquier cosa, arrayas, objetos
 })
 
 app.listen(3000)
