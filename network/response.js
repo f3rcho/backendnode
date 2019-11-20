@@ -1,3 +1,5 @@
+const chalk = require('chalk')
+
 exports.success = function (req, res, message, status) {
     res.status(status || 200).send({
         error: false,
@@ -8,7 +10,12 @@ exports.success = function (req, res, message, status) {
     })
 }
 
-exports.error = function (req, res, message, status) {
+// Tambien podemos agregar colores al mensaje de error instalando chalk. npm i chalk
+// const chalk = require('chalk)
+// Por ejemplo console.log(chalk.red('[response error]: ' + details)))
+exports.error = function (req, res, message, status, details) {
+    console.error(chalk.yellowBright('[response error]: ' + details));
+
     res.status(status || 200).send({
         error: message,
         codigo: 200,

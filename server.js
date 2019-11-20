@@ -22,7 +22,7 @@ router.post('/message', function(req, res) {
     console.log(req.body)
     console.log(req.query)
     if (req.query.error == 'ok') {
-        response.error(req, res, 'Error simulado', 400)
+        response.error(req, res, 'Error inesperado', 500, 'Es solo una simulacion de los errores') // tambien podemos usar los template strings
     } else {
         response.success(req, res, 'Creado correctamente')
      // res.send('Mensaje ' + req.body.text + ' añadido')
