@@ -4,7 +4,7 @@ exports.success = function (req, res, message, status) {
         codigo: 200,
         message: message, 
         body: req.body,
-        method: req.method
+        method: req.method // estos metodos los agregue de ejemplo pero no son parte de la clase dada!!
     })
 }
 
