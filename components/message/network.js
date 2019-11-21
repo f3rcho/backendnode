@@ -1,6 +1,6 @@
 const express = require('express')
 const response = require('../../network/response')
-
+const controller = require('./controller')
 const router = express.Router() //nos permite separar cabeceras, metodos, url
 
 
@@ -13,14 +13,14 @@ router.get('/', function(req, res) {
     response.success(req, res, 'Lista de mensajes')
 })
 router.post('/', function(req, res) {
-    console.log(req.body)
-    console.log(req.query)
-    if (req.query.error == 'ok') {
-        response.error(req, res, 'Error inesperado', 500, 'Es solo una simulacion de los errores') // tambien podemos usar los template strings
-    } else {
-        response.success(req, res, 'Creado correctamente')
-     // res.send('Mensaje ' + req.body.text + ' añadido')
-    }
+
+    controller.addMessage(req.body.user, req.body.message)
+        .then((fullMessage) => {
+            response.success(req, res, fullMessage, 201)
+        })
+        .catch(() => {
+            response.error(req, res, 'Informacion invalida', 400, 'Error en el controlador') 
+        })
 })
 
 router.delete('/message', function(req, res) {
