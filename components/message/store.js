@@ -1,13 +1,4 @@
-const db = require('mongoose')
 const Model = require('./model')
-
-db.Promise = global.Promise
-db.connect('mongodb+srv://db_user_backend_node:db_user_backend_@cluster0-icc7n.mongodb.net/test?retryWrites=true&w=majority', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-}).then(() => {
-    console.log(' [db] Conectada con exito')
-}).catch( error => console.error(error))
 
 function addMessage(message) {
     const myMessage = new Model(message)
