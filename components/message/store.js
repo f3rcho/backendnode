@@ -10,14 +10,17 @@ db.connect('mongodb+srv://db_user_backend_node:db_user_backend_@cluster0-icc7n.m
 }).catch( error => console.error(error))
 
 function addMessage(message) {
-    // list.push(message)
     const myMessage = new Model(message)
     myMessage.save()
     
 }
 
-async function getMessages() {
-    const messages = await Model.find()
+async function getMessages(filterUser) {
+    let filter = {}
+    if (filterUser !== null) {
+        filter = { user: filterUser }
+    }
+    const messages = await Model.find(filter)
     return messages  
 }
 
