@@ -37,8 +37,14 @@ router.patch('/:id', function (req, res) {
         })
 } )
 
-router.delete('/message', function(req, res) {
-    res.status(201).send({error: '', body: 'Eliminado correctamente'}) // podemos cualquier cosa, arrayas, objetos
+router.delete('/:id', function(req, res) {
+    controller.deleteMessage(req.params.id)
+        .then(() => {
+            response.success(res, res, `Usuario ${req.params.id} eliminado`)
+        })
+        .catch( e=> {
+            response.error(req, res, 'Error interno', 500, e)
+        })
 })
 
 module.exports = router
