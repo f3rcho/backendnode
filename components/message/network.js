@@ -17,9 +17,11 @@ router.post('/', function (req, res) {
     controller.addMessage(req.body.user, req.body.message)
         .then((fullMessage) => {
             response.success(req, res, fullMessage, 201)
+            
         })
         .catch(() => {
             response.error(req, res, 'Informacion invalida', 400, 'Error en el controlador') 
+            
         })
 })
 

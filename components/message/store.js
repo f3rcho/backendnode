@@ -1,5 +1,5 @@
 const db = require('mongoose')
-
+const Model = require('./model')
 
 db.Promise = global.Promise
 db.connect('mongodb+srv://db_user_backend_node:db_user_backend_@cluster0-icc7n.mongodb.net/test?retryWrites=true&w=majority', {
@@ -13,17 +13,17 @@ function addMessage(message) {
     // list.push(message)
     const myMessage = new Model(message)
     myMessage.save()
-    console.log(myMessage + '2')
+    
 }
 
 async function getMessages() {
-    const messages = await model.find()
+    const messages = await Model.find()
     return messages  
 }
 
 module.exports = {
     add: addMessage,
-    list: getMessages
+    list: getMessages,
     //get
     //update
     //delete
