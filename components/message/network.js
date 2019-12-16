@@ -1,12 +1,14 @@
 const express = require('express')
 const multer = require('multer');
 
+const config = require('../../config');
+
 const response = require('../../network/response')
 const controller = require('./controller')
 const router = express.Router() //nos permite separar cabeceras, metodos, url
 
 const upload = multer({
-    dest: 'public/files/',
+    dest: 'public/' + config.filesRoute + '/',
 });
 
 router.get('/', function (req, res) {
