@@ -12,7 +12,7 @@ exports.success = function (req, res, message, status) {
 // const chalk = require('chalk)
 // Por ejemplo console.log(chalk.red('[response error]: ' + details)))
 exports.error = function (req, res, message, status, details) {
-    console.error(chalk.redBright('[response error]: ' + details));
+    console.error(('[response error]: ' + details));
 
     res.status(status || 200).send({
         error: message, 
